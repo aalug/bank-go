@@ -16,4 +16,8 @@ sqlc:
 test:
 	go test -v -cover ./...
 
-.PHONY: migrate_up, migrate_down, sqlc, test
+# run tests in the given path (p) and display results in the html file
+test_coverage:
+	go test $(p) -coverprofile=coverage.out && go tool cover -html=coverage.out
+
+.PHONY: migrate_up, migrate_down, sqlc, test, test_coverage
