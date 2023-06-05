@@ -1,4 +1,3 @@
-SHELL=cmd
 
 # run up migrations, user details based on docker-compose.yml
 migrate_up:
@@ -10,7 +9,7 @@ migrate_down:
 
 # generate db related go code with sqlc
 sqlc:
-	docker run --rm -v "${PWD}:/src" -w /src kjconroy/sqlc generate
+	cmd.exe /c "docker run --rm -v ${PWD}:/src -w /src kjconroy/sqlc generate"
 
 # run all tests
 test:
