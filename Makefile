@@ -11,6 +11,10 @@ migrate_down:
 sqlc:
 	cmd.exe /c "docker run --rm -v ${PWD}:/src -w /src kjconroy/sqlc generate"
 
+# generate mock db for testing
+mock:
+	mockgen -package mockdb -destination db/mock/store.go github.com/aalug/go-bank/db/sqlc Store
+
 # run all tests
 test:
 	go test -v -cover ./...
@@ -19,6 +23,7 @@ test:
 test_coverage:
 	go test $(p) -coverprofile=coverage.out && go tool cover -html=coverage.out
 
+# run the HTTP server
 runserver:
 	go run main.go
 
