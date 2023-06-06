@@ -11,8 +11,9 @@ import (
 
 // createRandomAccount creates a random account and returns it
 func createRandomAccount(t *testing.T) Account {
+	user := createRandomUser(t)
 	params := CreateAccountParams{
-		Owner:    utils.RandomOwner(),
+		Owner:    user.Username,
 		Balance:  utils.RandomAmount(),
 		Currency: utils.RandomCurrency(),
 	}
