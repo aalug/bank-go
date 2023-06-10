@@ -9,7 +9,7 @@
 - [golang-migrate](https://github.com/golang-migrate/migrate)
 - [sqlc](https://github.com/kyleconroy/sqlc)
 - [testify](https://github.com/stretchr/testify)
-- [golang-jwt](https://github.com/golang-jwt/jwt)
+- [jwt-go](https://github.com/dgrijalva/jwt-go)
 
 ## Getting started
 1. Clone the repository
