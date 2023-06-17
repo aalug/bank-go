@@ -11,6 +11,7 @@
 - [testify](https://github.com/stretchr/testify)
 - [paseto](https://github.com/o1egl/paseto)
 - [jwt-go](https://github.com/dgrijalva/jwt-go)
+- [PASETO Security Tokens](github.com/o1egl/paseto)
 
 ## Getting started
 1. Clone the repository

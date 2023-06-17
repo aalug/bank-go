@@ -27,4 +27,4 @@ test_coverage:
 runserver:
 	go run main.go
 
-.PHONY: migrate_up, migrate_down, sqlc, test, test_coverage, runserver
+.PHONY: migrate_up, migrate_down, sqlc, test, test_coverage, runserver, mock
