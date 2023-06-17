@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-// Config sores configuration of the application
+// Config stores configuration of the application
 type Config struct {
 	DBDriver            string        `mapstructure:"DB_DRIVER"`
 	DBSource            string        `mapstructure:"DB_SOURCE"`

@@ -386,7 +386,7 @@ func TestDeleteAccountAPI(t *testing.T) {
 	randomUser, _ := generateRandomUser(t)
 	account := generateRandomAccount(randomUser.Username)
 
-	testCases := []struct {
+		testCases := []struct {
 		name          string
 		AccountID     int64
 		setupAuth     func(t *testing.T, r *http.Request, maker token.Maker)
