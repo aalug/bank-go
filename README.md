@@ -16,14 +16,30 @@
 ## Getting started
 1. Clone the repository
 2. Go to the project's root directory
-3. Run in your terminal:
-    - `docker-compose up` to run the database container
-    - `make migrate_up` to run migrations
-    - `make runserver` to start the server
+3. Rename `app.env.sample` to `app.env` and replace the values
+4. Run in your terminal:
+    - `docker-compose up --build` to run the containers
+5. Now everything should be ready and the server running on `SERVER_ADDRESS` specified in app.env
 
 ## Testing
-1. Run the postgres container (`docker-compose up`)
+1. Run the containers (database container is sufficient)
 2. Run in your terminal:
     - `make test`
    or
-    - `make test_coverage p={PATH}` where `{PATH}` is the path to the target directory for which you want to generate test coverage. The `{PATH}` should be replaced with the actual path you want to use. For example `./api`
+    - `make test_coverage p={PATH}` - to get the coverage in the HTML format - where `{PATH}` is the path to the target directory for which you want to generate test coverage. The `{PATH}` should be replaced with the actual path you want to use. For example `./api`
+   or
+    - simply use `go test` commands
+
+## API Endpoints
+#### Users (only endpoints that do not require authentication)
+ - `/users` - handles POST requests to create users
+ - `/users/login` - handles POST requests to log in users
+
+### Accounts
+- `/accounts` - handles POST requests to create accounts
+- `/accounts` - handles GET requests to get all accounts
+- `/accounts/{id}` - handles GET requests to get account details
+- `/accounts/{id}` - handles DELETE requests to delete an account
+
+### Transfers
+- `/transfers` - handles POST requests to transfer money from one account to another
