@@ -1,3 +1,6 @@
+# generate migrations, $(name) - name of the migration
+generate_migrations:
+	migrate create -ext sql -dir db/migrations -seq $(name)
 
 # run up migrations, user details based on docker-compose.yml
 migrate_up:

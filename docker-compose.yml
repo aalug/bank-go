@@ -5,7 +5,7 @@ services:
     image: postgres:15-alpine
     volumes:
       - dev-db-data:/var/lib/postgresql/data
-    container_name: go-bank
+    container_name: bank-go-db
     environment:
       - POSTGRES_DB=devdb
       - POSTGRES_USER=devuser
