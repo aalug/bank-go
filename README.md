@@ -44,7 +44,6 @@
 ### Transfers
 - `/transfers` - handles POST requests to transfer money from one account to another
 
-
 ## Database
 The database's schema and intricate details can be found on 
 dedicated webpage, which provides a comprehensive overview 
