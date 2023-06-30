@@ -9,9 +9,8 @@
 - [golang-migrate](https://github.com/golang-migrate/migrate)
 - [sqlc](https://github.com/kyleconroy/sqlc)
 - [testify](https://github.com/stretchr/testify)
-- [paseto](https://github.com/o1egl/paseto)
-- [jwt-go](https://github.com/dgrijalva/jwt-go)
 - [PASETO Security Tokens](github.com/o1egl/paseto)
+- [jwt-go](https://github.com/dgrijalva/jwt-go)
 
 ## Getting started
 1. Clone the repository
@@ -34,6 +33,7 @@
 #### Users (only endpoints that do not require authentication)
  - `/users` - handles POST requests to create users
  - `/users/login` - handles POST requests to log in users
+ - `/tokens/renew` - handles  POST requests to renew the access tokens
 
 ### Accounts
 - `/accounts` - handles POST requests to create accounts
@@ -43,3 +43,11 @@
 
 ### Transfers
 - `/transfers` - handles POST requests to transfer money from one account to another
+
+## Database
+The database's schema and intricate details can be found on 
+dedicated webpage, which provides a comprehensive overview 
+of the data structure, tables, relationships, and other essential 
+information. To explore the database further, please visit
+this [dbdocs.io webpage](https://dbdocs.io/aalug/bank_go).
+Password: `bankgopassword`
