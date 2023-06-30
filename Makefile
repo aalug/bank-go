@@ -40,4 +40,11 @@ test_coverage:
 runserver:
 	go run main.go
 
-.PHONY: migrate_up, migrate_down, sqlc, test, test_coverage, runserver, mock, db_schema, db_docs
+# remove old files and generate new protobuf files
+protobuf:
+	rm -f pb/*.go
+	protoc --proto_path=protobuf --go_out=pb --go_opt=paths=source_relative \
+	--go-grpc_out=pb --go-grpc_opt=paths=source_relative \
+	protobuf/*.proto
+
+.PHONY: migrate_up, migrate_down, sqlc, test, test_coverage, runserver, mock, db_schema, db_docs, protobuf
