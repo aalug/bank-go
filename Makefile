@@ -1,18 +1,28 @@
+DB_URL=postgresql://devuser:admin@localhost:5432/devdb?sslmode=disable
+
 # generate migrations, $(name) - name of the migration
 generate_migrations:
 	migrate create -ext sql -dir db/migrations -seq $(name)
 
 # run up migrations, user details based on docker-compose.yml
 migrate_up:
-	migrate -path db/migrations -database "postgresql://devuser:admin@localhost:5432/devdb?sslmode=disable" -verbose up
+	migrate -path db/migrations -database "$(DB_URL)" -verbose up
 
 # run down migrations, user details based on docker-compose.yml
 migrate_down:
-	migrate -path db/migrations -database "postgresql://devuser:admin@localhost:5432/devdb?sslmode=disable" -verbose down
+	migrate -path db/migrations -database "$(DB_URL)}" -verbose down
 
 # generate db related go code with sqlc
 sqlc:
 	cmd.exe /c "docker run --rm -v ${PWD}:/src -w /src kjconroy/sqlc generate"
+
+# generate database documentation on the dbdocs website
+db_docs:
+	dbdocs build docs/database.dbml
+
+# generate .sql file with database schema
+db_schema:
+	dbml2sql --postgres -o docs/schema.sql docs/database.dbml
 
 # generate mock db for testing
 mock:
@@ -30,4 +40,4 @@ test_coverage:
 runserver:
 	go run main.go
 
-.PHONY: migrate_up, migrate_down, sqlc, test, test_coverage, runserver, mock
+.PHONY: migrate_up, migrate_down, sqlc, test, test_coverage, runserver, mock, db_schema, db_docs

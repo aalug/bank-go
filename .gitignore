@@ -26,5 +26,6 @@ go.work
 dist/
 tmp/
 
+*.log
 *errors.log
 *error.log
