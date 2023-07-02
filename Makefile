@@ -45,6 +45,7 @@ protobuf:
 	rm -f pb/*.go
 	protoc --proto_path=protobuf --go_out=pb --go_opt=paths=source_relative \
 	--go-grpc_out=pb --go-grpc_opt=paths=source_relative \
+	--grpc-gateway_out=pb --grpc-gateway_opt=paths=source_relative \
 	protobuf/*.proto
 
 .PHONY: migrate_up, migrate_down, sqlc, test, test_coverage, runserver, mock, db_schema, db_docs, protobuf
