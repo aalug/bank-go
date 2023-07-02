@@ -104,7 +104,7 @@ func runGatewayServer(config utils.Config, store db.Store) {
 	mux := http.NewServeMux()
 	mux.Handle("/", grpcMux)
 
-	listener, err := net.Listen("tcp", "0.0.0.0:8081")
+	listener, err := net.Listen("tcp", config.HTTPServerAddress)
 	if err != nil {
 		log.Fatal("cannot create a listener:", err)
 	}

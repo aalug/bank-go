@@ -36,7 +36,7 @@ test:
 test_coverage:
 	go test $(p) -coverprofile=coverage.out && go tool cover -html=coverage.out
 
-# run the HTTP server
+# run the HTTP and gRPC servers
 runserver:
 	go run main.go
 
