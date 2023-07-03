@@ -2,8 +2,8 @@ package api
 
 import (
 	"database/sql"
-	db "github.com/aalug/go-bank/db/sqlc"
-	"github.com/aalug/go-bank/utils"
+	db "github.com/aalug/bank-go/db/sqlc"
+	"github.com/aalug/bank-go/utils"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"github.com/lib/pq"

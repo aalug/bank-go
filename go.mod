@@ -1,4 +1,4 @@
-module github.com/aalug/go-bank
+module github.com/aalug/bank-go
 
 go 1.20
 

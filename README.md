@@ -44,7 +44,12 @@
 ### Transfers
 - `/transfers` - handles POST requests to transfer money from one account to another
 
-## Database
+## Documentation
+### API
+After running the server, the API (HTTP gateway) documentation 
+can be found at http://localhost:8080/docs/
+
+### Database
 The database's schema and intricate details can be found on 
 dedicated webpage, which provides a comprehensive overview 
 of the data structure, tables, relationships, and other essential 

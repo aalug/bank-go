@@ -2,7 +2,7 @@ package api
 
 import (
 	"fmt"
-	"github.com/aalug/go-bank/token"
+	"github.com/aalug/bank-go/token"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 	"net/http"

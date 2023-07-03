@@ -1,7 +1,7 @@
 package token
 
 import (
-	"github.com/aalug/go-bank/utils"
+	"github.com/aalug/bank-go/utils"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/stretchr/testify/require"
 	"testing"

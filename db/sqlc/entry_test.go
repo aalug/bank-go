@@ -2,7 +2,7 @@ package db
 
 import (
 	"context"
-	"github.com/aalug/go-bank/utils"
+	"github.com/aalug/bank-go/utils"
 	"github.com/stretchr/testify/require"
 	"testing"
 )

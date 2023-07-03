@@ -2,7 +2,7 @@ package db
 
 import (
 	"database/sql"
-	"github.com/aalug/go-bank/utils"
+	"github.com/aalug/bank-go/utils"
 	"log"
 	"os"
 	"testing"

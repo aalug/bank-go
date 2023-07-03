@@ -2,10 +2,10 @@ package gapi
 
 import (
 	"fmt"
-	db "github.com/aalug/go-bank/db/sqlc"
-	"github.com/aalug/go-bank/pb"
-	"github.com/aalug/go-bank/token"
-	"github.com/aalug/go-bank/utils"
+	db "github.com/aalug/bank-go/db/sqlc"
+	"github.com/aalug/bank-go/pb"
+	"github.com/aalug/bank-go/token"
+	"github.com/aalug/bank-go/utils"
 )
 
 // Server serves gRPC requests for the service
