@@ -49,5 +49,6 @@ protoc:
 	--grpc-gateway_out=pb --grpc-gateway_opt=paths=source_relative \
 	--openapiv2_out=docs/swagger --openapiv2_opt=allow_merge=true,merge_file_name=bank_go \
 	protobuf/*.proto
+	statik -src=./docs/swagger -dest=./docs
 
 .PHONY: migrate_up, migrate_down, sqlc, test, test_coverage, runserver, mock, db_schema, db_docs, protobuf
