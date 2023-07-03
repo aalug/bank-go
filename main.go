@@ -5,11 +5,13 @@ import (
 	"database/sql"
 	"github.com/aalug/bank-go/api"
 	db "github.com/aalug/bank-go/db/sqlc"
+	_ "github.com/aalug/bank-go/docs/statik"
 	"github.com/aalug/bank-go/gapi"
 	"github.com/aalug/bank-go/pb"
 	"github.com/aalug/bank-go/utils"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	_ "github.com/lib/pq"
+	"github.com/rakyll/statik/fs"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -104,9 +106,14 @@ func runGatewayServer(config utils.Config, store db.Store) {
 	mux := http.NewServeMux()
 	mux.Handle("/", grpcMux)
 
-	// setup local file server for swagger docs
-	fileServer := http.FileServer(http.Dir("./docs/swagger"))
-	mux.Handle("/docs/", http.StripPrefix("/docs/", fileServer))
+	// swagger docs server
+	statikFileSystem, err := fs.New()
+	if err != nil {
+		log.Fatal("cannot create a statik file system: ", err)
+	}
+
+	docsHandler := http.StripPrefix("/docs/", http.FileServer(statikFileSystem))
+	mux.Handle("/docs/", docsHandler)
 
 	listener, err := net.Listen("tcp", config.HTTPServerAddress)
 	if err != nil {
