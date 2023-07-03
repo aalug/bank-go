@@ -3,7 +3,7 @@ package api
 import (
 	"errors"
 	"fmt"
-	"github.com/aalug/go-bank/token"
+	"github.com/aalug/bank-go/token"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"

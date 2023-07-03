@@ -2,9 +2,9 @@ package gapi
 
 import (
 	"context"
-	db "github.com/aalug/go-bank/db/sqlc"
-	"github.com/aalug/go-bank/pb"
-	"github.com/aalug/go-bank/utils"
+	db "github.com/aalug/bank-go/db/sqlc"
+	"github.com/aalug/bank-go/pb"
+	"github.com/aalug/bank-go/utils"
 	"github.com/lib/pq"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

@@ -3,11 +3,11 @@ package main
 import (
 	"context"
 	"database/sql"
-	"github.com/aalug/go-bank/api"
-	db "github.com/aalug/go-bank/db/sqlc"
-	"github.com/aalug/go-bank/gapi"
-	"github.com/aalug/go-bank/pb"
-	"github.com/aalug/go-bank/utils"
+	"github.com/aalug/bank-go/api"
+	db "github.com/aalug/bank-go/db/sqlc"
+	"github.com/aalug/bank-go/gapi"
+	"github.com/aalug/bank-go/pb"
+	"github.com/aalug/bank-go/utils"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	_ "github.com/lib/pq"
 	"google.golang.org/grpc"
@@ -103,6 +103,10 @@ func runGatewayServer(config utils.Config, store db.Store) {
 
 	mux := http.NewServeMux()
 	mux.Handle("/", grpcMux)
+
+	// setup local file server for swagger docs
+	fileServer := http.FileServer(http.Dir("./docs/swagger"))
+	mux.Handle("/docs/", http.StripPrefix("/docs/", fileServer))
 
 	listener, err := net.Listen("tcp", config.HTTPServerAddress)
 	if err != nil {

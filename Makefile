@@ -40,12 +40,14 @@ test_coverage:
 runserver:
 	go run main.go
 
-# remove old files and generate new protobuf files
-protobuf:
+# remove old files and generate new proto files. Generate swagger files
+protoc:
 	rm -f pb/*.go
+	rm -f docs/swagger/*.swagger.json
 	protoc --proto_path=protobuf --go_out=pb --go_opt=paths=source_relative \
 	--go-grpc_out=pb --go-grpc_opt=paths=source_relative \
 	--grpc-gateway_out=pb --grpc-gateway_opt=paths=source_relative \
+	--openapiv2_out=docs/swagger --openapiv2_opt=allow_merge=true,merge_file_name=bank_go \
 	protobuf/*.proto
 
 .PHONY: migrate_up, migrate_down, sqlc, test, test_coverage, runserver, mock, db_schema, db_docs, protobuf

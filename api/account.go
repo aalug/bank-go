@@ -3,8 +3,8 @@ package api
 import (
 	"database/sql"
 	"errors"
-	db "github.com/aalug/go-bank/db/sqlc"
-	"github.com/aalug/go-bank/token"
+	db "github.com/aalug/bank-go/db/sqlc"
+	"github.com/aalug/bank-go/token"
 	"github.com/gin-gonic/gin"
 	"github.com/lib/pq"
 	"net/http"

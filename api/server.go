@@ -2,9 +2,9 @@ package api
 
 import (
 	"fmt"
-	db "github.com/aalug/go-bank/db/sqlc"
-	"github.com/aalug/go-bank/token"
-	"github.com/aalug/go-bank/utils"
+	db "github.com/aalug/bank-go/db/sqlc"
+	"github.com/aalug/bank-go/token"
+	"github.com/aalug/bank-go/utils"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"

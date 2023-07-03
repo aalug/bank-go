@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	db "github.com/aalug/go-bank/db/sqlc"
-	"github.com/aalug/go-bank/token"
+	db "github.com/aalug/bank-go/db/sqlc"
+	"github.com/aalug/bank-go/token"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
