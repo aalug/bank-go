@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Bank Go",
+    "title": "Bank Go API",
     "version": "1.0",
     "contact": {
       "name": "aalug",
@@ -23,6 +23,8 @@
   "paths": {
     "/v1/create_user": {
       "post": {
+        "summary": "Create a new user.",
+        "description": "API to create a new user.",
         "operationId": "GoBank_CreateUser",
         "responses": {
           "200": {
@@ -49,12 +51,14 @@
           }
         ],
         "tags": [
-          "GoBank"
+          "create new user"
         ]
       }
     },
     "/v1/login_user": {
       "post": {
+        "summary": "Login user.",
+        "description": "API to login an existing user. Get access and refresh tokens.",
         "operationId": "GoBank_LoginUser",
         "responses": {
           "200": {
@@ -81,7 +85,7 @@
           }
         ],
         "tags": [
-          "GoBank"
+          "login user"
         ]
       }
     }
