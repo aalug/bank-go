@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Bank Go API",
-    "version": "1.0",
+    "version": "1.1",
     "contact": {
       "name": "aalug",
       "url": "https://github.com/aalug",
@@ -51,7 +51,7 @@
           }
         ],
         "tags": [
-          "create new user"
+          "users"
         ]
       }
     },
@@ -85,7 +85,41 @@
           }
         ],
         "tags": [
-          "login user"
+          "users"
+        ]
+      }
+    },
+    "/v1/update_user": {
+      "patch": {
+        "summary": "Update a user.",
+        "description": "API to create a new user.",
+        "operationId": "GoBank_UpdateUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateUserRequest"
+            }
+          }
+        ],
+        "tags": [
+          "users"
         ]
       }
     }
@@ -149,6 +183,31 @@
         "refreshTokenExpiresAt": {
           "type": "string",
           "format": "date-time"
+        }
+      }
+    },
+    "pbUpdateUserRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "pbUpdateUserResponse": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/pbUser"
         }
       }
     },

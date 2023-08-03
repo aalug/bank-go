@@ -26,7 +26,7 @@ db_schema:
 
 # generate mock db for testing
 mock:
-	mockgen -package mockdb -destination db/mock/store.go github.com/aalug/go-bank/db/sqlc Store
+	mockgen -package mockdb -destination db/mock/store.go github.com/aalug/bank-go/db/sqlc Store
 
 # run all tests
 test:
@@ -51,4 +51,9 @@ protoc:
 	protobuf/*.proto
 	statik -src=./docs/swagger -dest=./docs
 
-.PHONY: migrate_up, migrate_down, sqlc, test, test_coverage, runserver, mock, db_schema, db_docs, protobuf
+# start db container and runs gRPC and HTTP gateway
+start:
+	docker-compose up -d db
+	go run main.go
+
+.PHONY: migrate_up, migrate_down, sqlc, test, test_coverage, runserver, mock, db_schema, db_docs, protoc, start
