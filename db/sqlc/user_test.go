@@ -2,6 +2,7 @@ package db
 
 import (
 	"context"
+	"database/sql"
 	"github.com/aalug/bank-go/utils"
 	"github.com/stretchr/testify/require"
 	"testing"
@@ -50,6 +51,35 @@ func TestGetUser(t *testing.T) {
 	require.Equal(t, user1.HashedPassword, user2.HashedPassword)
 	require.Equal(t, user1.FullName, user2.FullName)
 	require.Equal(t, user1.Email, user2.Email)
+	require.WithinDuration(t, user1.PasswordChangedAt, user2.PasswordChangedAt, time.Second)
+	require.WithinDuration(t, user1.CreatedAt, user2.CreatedAt, time.Second)
+}
+
+func TestUpdateUser(t *testing.T) {
+	user1 := createRandomUser(t)
+	params := UpdateUserParams{
+		Username: user1.Username,
+		HashedPassword: sql.NullString{
+			String: utils.RandomString(6),
+			Valid:  true,
+		},
+		FullName: sql.NullString{
+			String: utils.RandomOwner(),
+			Valid:  true,
+		},
+		Email: sql.NullString{
+			String: utils.RandomEmail(),
+			Valid:  true,
+		},
+	}
+
+	user2, err := testQueries.UpdateUser(context.Background(), params)
+	require.NoError(t, err)
+	require.NotEmpty(t, user2)
+	require.Equal(t, user1.Username, user2.Username)
+	require.Equal(t, params.HashedPassword.String, user2.HashedPassword)
+	require.Equal(t, params.FullName.String, user2.FullName)
+	require.Equal(t, params.Email.String, user2.Email)
 	require.WithinDuration(t, user1.PasswordChangedAt, user2.PasswordChangedAt, time.Second)
 	require.WithinDuration(t, user1.CreatedAt, user2.CreatedAt, time.Second)
 }

@@ -5,6 +5,7 @@ package pb;
 import "google/api/annotations.proto";
 import "rpc_create_user.proto";
 import "rpc_login_user.proto";
+import "rpc_update_user.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
 option go_package = "github.com/aalug/go-bank/pb";
@@ -12,7 +13,7 @@ option go_package = "github.com/aalug/go-bank/pb";
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
     title: "Bank Go API";
-    version: "1.0";
+    version: "1.1";
     contact: {
       name: "aalug";
       url: "https://github.com/aalug";
@@ -30,7 +31,7 @@ service GoBank {
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       description: "API to create a new user.";
       summary: "Create a new user.";
-      tags: "create new user";
+      tags: "users";
     };
   };
   rpc LoginUser (LoginUserRequest) returns (LoginUserResponse) {
@@ -41,7 +42,18 @@ service GoBank {
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       description: "API to login an existing user. Get access and refresh tokens.";
       summary: "Login user.";
-      tags: "login user";
+      tags: "users";
+    };
+  };
+  rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse) {
+    option (google.api.http) = {
+      patch: "/v1/update_user"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      description: "API to create a new user.";
+      summary: "Update a user.";
+      tags: "users";
     };
   };
 }
